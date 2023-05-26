@@ -1,0 +1,15 @@
+{% extends 'main/base_layout.html' %}
+{% block main-content %}
+
+
+            <form method="post" action="{% url 'bookstore:book-update' book.id %}">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+
+                <button type="submit" class="btn btn-primary" style="margin-left:600px">Submit</button>
+                
+            </form>
+       
+{% endblock %}

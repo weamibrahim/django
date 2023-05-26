@@ -1,0 +1,31 @@
+{% extends 'main/base_layout.html' %}
+
+
+{% block main-content %}
+ <h1> Welcome to todo details </h1>
+ <table class="table">
+    <thead>
+        <tr>
+            <td> ID </td>
+            <td> Name </td>
+            <td> Priority </td>
+            <td> Description </td>
+        </tr>
+    </thead>
+    <tbody>
+
+            <td>{{ book.id}} </td>
+            <td>{{ book.name }} </td>
+            <td> {{ book.rate}}</td>
+            <td> {{ book.description | truncatewords:3 }} </td>
+        </tr>
+    </tbody>
+
+ </table>
+
+{% endblock %}
+
+
+
+<a href="{% url 'bookstore:index' %}"> Back to Index</a>
+<a href="{% url 'bookstore:index' %}"> Back to List</a>

@@ -1,0 +1,51 @@
+{% extends 'main/base_layout.html' %}
+
+{# override block title #}
+
+{% block title %}
+    TODO task list
+{% endblock %}
+
+{# override body #}
+
+{% block main-content %}
+<table class="table table-condensed">
+ <thead>
+    <tr>
+        <td> ID </td>
+        <td> Name </td>
+        <td> Priority </td>
+        <td> Description </td>
+        <td> Actions </td>
+    </tr>
+ </thead>
+ 
+ <tbody>
+    <a class="btn btn-danger" href="{% url 'bookstore:book-create' %}"> create</a>
+    {% for book in books%}
+    <td> {{ book.id }} </td>
+    <td> {{ book.name }} </td>
+    <td> {{ book.rate }} </td>
+    <td> {{ book.description | truncatewords:2  | title }} </td>
+    
+    <td> 
+        <a class="btn btn-info" href="{% url 'bookstore:book-detail' book.id %}"> View</a>
+        <a class="btn btn-info" href="{% url 'bookstore:book-update' book.id %}"> Update</a>
+        <a class="btn btn-danger" href="{% url 'bookstore:book-delete' book.id %}"> Delete</a>
+    </td>
+   </tr>
+
+   {% empty %}
+   <tr>
+    <td  class="text-center"> no data</td>
+    <td  class="text-center"> no data</td>
+    <td  class="text-center"> no data</td>
+    <td  class="text-center"> no data</td>
+    <td  class="text-center"> no data</td>
+
+   </tr>
+{% endfor %}
+ </tbody>
+
+</table>
+{% endblock %}
